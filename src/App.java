@@ -1,7 +1,8 @@
 import java.time.LocalDate;
 
-import br.com.dio.desafio.dominio.Conteudo;
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 public class App {
@@ -22,7 +23,24 @@ public class App {
         mentoria.setDescricao("Mentoria Java");
         mentoria.setData(LocalDate.now());
 
-        Conteudo conteudo = new Curso();
-        System.out.println("curso:" + curso);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Spring Framework");
+        bootcamp.setDescricao("Bootcamp introdutório de Java com Spring Framework");
+        bootcamp.getConteudos().add(curso);
+
+        Dev dev = new Dev();
+        dev.setNome("Higor Souza");
+        dev.inscreverBootcamp(bootcamp);
+
+        System.out.println("conteudos Inscritos:" + dev.getConteudosInscritos());
+        System.out.println("conteudos Concluidos:" + dev.getConteudosConcluidos());
+        System.out.println("total xp:" + dev.calcularTotalXp());
+        
+        System.out.println("................");
+        
+        dev.progredir();
+        System.out.println("conteudos Inscritos:" + dev.getConteudosInscritos());
+        System.out.println("conteudos Concluidos:" + dev.getConteudosConcluidos());
+        System.out.println("total xp:" + dev.calcularTotalXp());
     }
 }
